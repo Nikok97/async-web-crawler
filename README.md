@@ -6,6 +6,8 @@
 An **asynchronous web crawler** built with Python and aiohttp.
 The crawler stores results in SQLite by default and can also export to JSON or CSV. It fetches pages asynchronously, stores URLs, categories, and keywords, and optionally scrapes product data. In addition, the crawler respects robots.txt, avoids duplicate requests, and can resume unfinished crawls.
 
+💻 Example output: `mini.sqlite` database with URLs, categories, keywords, and product details like title, price, stock, and rating.
+
 Note: as a personal project, some sections are **hardcoded for https://books.toscrape.com**. Adapting to other sites would require minor changes.
 
 ---
