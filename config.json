@@ -1,0 +1,14 @@
+{
+  "seed_url": "https://books.toscrape.com",
+  "delay_range": [1, 3],
+  "batch_size": 2,
+  "file_type_filters": [".jpg", ".png", ".gif", ".pdf"],
+  "crawl_depth_limit": 10,
+  "output_format": "sqlite",
+  "use_playwright": false,
+  "max_concurrent_per_domain": 2,
+  "include_paths": [],  
+  "exclude_patterns": ["\\.pdf$", "\\.jpg$", "/private/.*"],
+  "min_content_length": 100,
+  "max_content_length": 100000
+}
