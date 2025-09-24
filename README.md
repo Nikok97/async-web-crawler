@@ -1,3 +1,6 @@
+![Python](https://img.shields.io/badge/python-3.9+-blue)
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+
 # Async Web Crawler
 
 An **asynchronous web crawler** built with Python and aiohttp.
