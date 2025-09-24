@@ -46,6 +46,7 @@ The crawler stores results in SQLite by default and can also export to JSON or C
   "min_content_length": 100,
   "max_content_length": 100000
 }
+```
 
 ---
 
