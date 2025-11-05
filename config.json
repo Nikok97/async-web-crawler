@@ -1,14 +1,22 @@
 {
   "seed_url": "https://books.toscrape.com",
   "delay_range": [1, 3],
-  "batch_size": 2,
+  "batch_size": 4,
   "file_type_filters": [".jpg", ".png", ".gif", ".pdf"],
-  "crawl_depth_limit": 10,
-  "output_format": "sqlite",
+  "crawl_depth_limit": null,
+  "output_format": "json",
   "use_playwright": false,
-  "max_concurrent_per_domain": 2,
+  "max_concurrent_per_domain": 4,
   "include_paths": [],  
-  "exclude_patterns": ["\\.pdf$", "\\.jpg$", "/private/.*"],
+  "exclude_patterns": [],
   "min_content_length": 100,
-  "max_content_length": 100000
+  "max_content_length": 100000,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+  "retries": 3,
+  "max_redirects": 5,
+  "timeout_seconds": 10,
+  "respect_robots_txt": true,
+  "logging_level": "INFO",
+  "database_path": "mini.sqlite"
+
 }
