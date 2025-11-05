@@ -55,21 +55,22 @@ Note: as a personal project, some sections are **designed for https://books.tosc
   "min_content_length": 100,
   "max_content_length": 100000,
   "user_agent": "MyCrawlerBot/1.0"
-}```
+}
+```
 
-• seed_url: starting URL for the crawl
+seed_url: starting URL for the crawl
 
-• delay_min / delay_max: min/max delay between requests to the same domain
+delay_min / delay_max: min/max delay between requests to the same domain
 
-• max_concurrent_per_domain: number of simultaneous requests per domain
+max_concurrent_per_domain: number of simultaneous requests per domain
 
-• file_type_filters: ignored file extensions
+file_type_filters: ignored file extensions
 
-• crawl_depth_limit: how deep to follow links
+crawl_depth_limit: how deep to follow links
 
-• exclude_patterns: regex patterns to skip URLs
+exclude_patterns: regex patterns to skip URLs
 
-• min_content_length / max_content_length: content size validation
+min_content_length / max_content_length: content size validation
 
 ---
 
@@ -172,5 +173,6 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
+
 
 
