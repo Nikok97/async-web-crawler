@@ -55,7 +55,7 @@ Note: as a personal project, some sections are **designed for https://books.tosc
   "min_content_length": 100,
   "max_content_length": 100000,
   "user_agent": "MyCrawlerBot/1.0"
-}
+}```
 
 • seed_url: starting URL for the crawl
 
@@ -172,4 +172,5 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
+
 
