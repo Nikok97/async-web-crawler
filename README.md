@@ -141,6 +141,7 @@ min_content_length / max_content_length: content size validation
 
 ## Project structure
 
+```
 project_root/
 │
 ├── crawler.py # Main async crawler logic (queue, workers, enqueuing, fetching)
@@ -154,6 +155,7 @@ project_root/
 ├── skipped_pages.log # Skipped URLs with reasons
 ├── requirements.txt # Optional, list of pip dependencies
 └── README.md # Project documentation
+```
 
 ---
 
@@ -173,6 +175,7 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
+
 
 
 
