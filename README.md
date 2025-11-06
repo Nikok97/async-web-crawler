@@ -143,17 +143,17 @@ min_content_length / max_content_length: content size validation
 
 project_root/
 │
-├── crawler.py          # Main async crawler logic (queue, workers, enqueuing, fetching)
-├── db.py               # Database utilities (insert URLs, products, links, categories, keywords)
-├── parse.py            # Parsing and processing functions (extract links, keywords, categories)
-├── fetch_utility.py    # Functions to fetch URLs, handle JS pages, check content
-├── export.py           # Export database results to JSON or CSV
-├── config.json         # Configuration file (seed URL, depth, delays, filters)
-├── crawler.log         # General activity logs
-├── crawler_errors.log  # Errors during crawling
-├── skipped_pages.log   # Skipped URLs with reasons
-├── requirements.txt    # Optional, list of pip dependencies
-└── README.md           # Project documentation
+├── crawler.py # Main async crawler logic (queue, workers, enqueuing, fetching)
+├── db.py # Database utilities (insert URLs, products, links, categories, keywords)
+├── parse.py # Parsing and processing functions (extract links, keywords, categories)
+├── fetch_utility.py # Functions to fetch URLs, handle JS pages, check content
+├── export.py # Export database results to JSON or CSV
+├── config.json # Configuration file (seed URL, depth, delays, filters)
+├── crawler.log # General activity logs
+├── crawler_errors.log # Errors during crawling
+├── skipped_pages.log # Skipped URLs with reasons
+├── requirements.txt # Optional, list of pip dependencies
+└── README.md # Project documentation
 
 ---
 
@@ -173,6 +173,7 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
+
 
 
 
