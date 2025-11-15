@@ -154,11 +154,13 @@ Note: as a personal project, some sections are **designed for https://books.tosc
 ## Examples: JSON export file
 
 ![JSON export Screenshot](images/JSON.JPG)
+
 *Shows a snippet of the JSON file produced using --export json, containing structured data for URLs, keywords, categories, and products.*
 
 ## Examples: CSV export file
 
 ![CSV export Screenshot](images/CSV.JPG)
+
 *Shows the CSV format produced using --export csv, where crawled data is stored in tabular form for spreadsheets or external tools.*
 
 ---
@@ -221,5 +223,6 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
+
 
 
