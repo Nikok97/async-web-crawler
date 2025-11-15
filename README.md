@@ -92,7 +92,8 @@ Note: as a personal project, some sections are **designed for https://books.tosc
 ## Example for standard terminal output
 
 ![Terminal Screenshot](images/Terminal.JPG)
-*Shows the crawler running from the command line with asynchronous workers fetching pages, enqueuing new URLs and respecting rate limits*
+
+*Shows the crawler running in the terminal with multiple asynchronous workers fetching pages in parallel, extracting links, and applying per-domain rate limits.*
 
 ---    
 
@@ -113,31 +114,31 @@ Note: as a personal project, some sections are **designed for https://books.tosc
 
 ![DB structure Screenshot](images/Db_struct.JPG)
 
-*Shows the structure of the SQLite database, including the Urls, Links, Category, PageKeywords, and Products tables created and updated during crawling.*
+*Displays the SQLite database schema with all tables used by the crawler: Urls, Links, Products, Category, and PageKeywords. This view illustrates the relational structure used to connect URLs, categories, extracted keywords, and product details.*
 
 ## Example: URLs table
 
 ![DB URLs Screenshot](images/URLs.JPG)
 
-*This is how the crawler stores the URLS. In this particular crawl, I made sure to skip pages which did not match a "product page" HTML layout.*
+*Shows the contents of the Urls table, where each crawled URL is stored along with crawl status, content hash, depth, and metadata. In this particular run, only pages matching the product-page HTML structure were stored as valid entries.*
 
 ## Example: Products table
 
 ![DB products Screenshot](images/Products.JPG)
 
-*Shows the category table generated from the website’s structure, including the normalized category names extracted from navigation menus.*
+*Shows the Products table created from product pages, containing fields such as title, price, availability, rating, SKU, and image URL. This table is populated when the crawler identifies a page as a product detail page.* 
 
 ## Example: Keywords table
 
 ![DB keywords Screenshot](images/Keywords.JPG)
 
-*Displays the PageKeywords table containing tokens extracted from page text, along with frequency counts and stopword filtering applied.*
+*Displays the PageKeywords table with extracted tokens from each page, including frequency counts. Stopwords were filtered out, leaving only meaningful content-based keywords.*
 
 ## Example: Categories table
 
 ![DB categories Screenshot](images/Categories.JPG)
 
-*Shows the category table generated from the website’s structure, including the normalized category names extracted from navigation menus.*
+*Shows the Category table, which contains all categories detected from the site’s navigation structure (Books → Fiction → etc.). Category names have been normalized and linked to their source URLs.*
 
 ---
 
@@ -155,13 +156,14 @@ Note: as a personal project, some sections are **designed for https://books.tosc
 
 ![JSON export Screenshot](images/JSON.JPG)
 
-*Shows a snippet of the JSON file produced using --export json, containing structured data for URLs, keywords, categories, and products.*
+*Shows an example of the JSON export produced by the --export json command. The file contains structured records for URLs, products, categories, and keywords.*
 
 ## Examples: CSV export file
 
 ![CSV export Screenshot](images/CSV.JPG)
 
-*Shows the CSV format produced using --export csv, where crawled data is stored in tabular form for spreadsheets or external tools.*
+*Shows the CSV export file generated from the SQLite database. Each row represents a crawled product or URL entry, depending on the selected export mode.*
+
 
 ---
 
@@ -223,6 +225,4 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
-
-
 
