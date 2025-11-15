@@ -56,27 +56,29 @@ Note: as a personal project, some sections are **designed for https://books.tosc
   "max_content_length": 100000,
   "user_agent": "MyCrawlerBot/1.0"
 }
+
 ```
 
-seed_url: starting URL for the crawl
+• seed_url: starting URL for the crawl
 
-delay_min / delay_max: min/max delay between requests to the same domain
+• delay_min / delay_max: min/max delay between requests to the same domain
 
-max_concurrent_per_domain: number of simultaneous requests per domain
+• max_concurrent_per_domain: number of simultaneous requests per domain
 
-file_type_filters: ignored file extensions
+• file_type_filters: ignored file extensions
 
-crawl_depth_limit: how deep to follow links
+• crawl_depth_limit: how deep to follow links
 
-exclude_patterns: regex patterns to skip URLs
+• exclude_patterns: regex patterns to skip URLs
 
-min_content_length / max_content_length: content size validation
+• min_content_length / max_content_length: content size validation
+
 
 ---
 
 ## Usage
 
-- CLI configurable. 
+- The program is optionally CLI configurable. 
 - Example:
 
 ```python crawler.py --domain https://books.toscrape.com/ --depth 2```
@@ -85,8 +87,12 @@ min_content_length / max_content_length: content size validation
 
 - `--domain` : Override seed URL from config  
 - `--depth` : Set crawl depth limit  
-- `--resume` : Resume crawling from unfinished URLs  
+- `--resume` : Resume crawling from unfinished URLs
 
+## Example for standard terminal output
+
+![Terminal Screenshot](images/Terminal.JPG)
+*Shows the crawler running from the command line with asynchronous workers fetching pages, enqueuing new URLs and respecting rate limits*
 
 ---    
 
@@ -103,6 +109,36 @@ min_content_length / max_content_length: content size validation
 - Products: scraped product data (title, price, stock, rating, image)
 
 
+## Example: DB structure
+
+![DB structure Screenshot](images/Db_struct.JPG)
+
+*Shows the structure of the SQLite database, including the Urls, Links, Category, PageKeywords, and Products tables created and updated during crawling.*
+
+## Example: URLs table
+
+![DB URLs Screenshot](images/URLs.JPG)
+
+*This is how the crawler stores the URLS. In this particular crawl, I made sure to skip pages which did not match a "product page" HTML layout.*
+
+## Example: Products table
+
+![DB products Screenshot](images/Products.JPG)
+
+*Shows the category table generated from the website’s structure, including the normalized category names extracted from navigation menus.*
+
+## Example: Keywords table
+
+![DB keywords Screenshot](images/Keywords.JPG)
+
+*Displays the PageKeywords table containing tokens extracted from page text, along with frequency counts and stopword filtering applied.*
+
+## Example: Categories table
+
+![DB categories Screenshot](images/Categories.JPG)
+
+*Shows the category table generated from the website’s structure, including the normalized category names extracted from navigation menus.*
+
 ---
 
 ## Export
@@ -113,6 +149,15 @@ min_content_length / max_content_length: content size validation
 
    For JSON: run `python main.py --export json`
    For CSV: run `python main.py --export json`
+
+
+## Examples: JSON export file
+
+![JSON export Screenshot](images/JSON.JPG)
+
+## Examples: CSV export file
+
+![CSV export Screenshot](images/CSV.JPG)
 
 
 ---
@@ -175,8 +220,4 @@ For major changes, please open an issue first to discuss.
 ## Acknowledgements
 
 - Uses aiohttp library and BeatifulSoup.
-
-
-
-
 
