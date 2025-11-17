@@ -35,15 +35,6 @@ from fetch_utility import (
     now
 )
 
-# Globals updated from config/CLI
-#use_playwright = False
-#Optional Playwright support for JS-rendered pages
-#try:
-#    from playwright.async_api import async_playwright
-#    PLAYWRIGHT_AVAILABLE = True
-#except ImportError:
-#    PLAYWRIGHT_AVAILABLE = False
-
 def setup_loggers():
     """Sets up a general logger, a skipped logger and an error logger, with corresponding handlers and levels."""
     # General logger
@@ -159,7 +150,7 @@ async def worker(session, url_queue, ctx):
             # DB writes in a single lock
             inserted_ids = await save_to_db(ctx, currenturl, to_enqueue, link_pairs, product_data, category, keywords)
 
-            # --- Enqueue outside lock (non-blocking db lock) ---
+            # Enqueue outside lock (non-blocking db lock) 
             for normalized_link, next_depth in to_enqueue:
                 
                 print(f"Inserted URL {normalized_link} with id={inserted_ids.get(normalized_link)}")
