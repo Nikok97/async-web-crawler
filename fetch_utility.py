@@ -1,11 +1,13 @@
-import logging
 import aiohttp
 import asyncio
+import logging
 import ssl
 
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 from datetime import datetime, timezone
+from urllib.parse import urljoin
+from playwright.async_api import async_playwright
+
 
 #Def Now
 def now():
@@ -68,25 +70,24 @@ async def fetch_static(ctx, session, url, backoff=1):
 
     return None
 
-#Optional Playwright fetch: *******TE FALTA REVISTAR ESTO******
-async def fetch_dynamic(playwright, url, timeout=15000):
-
-    """Fetch HTML content of a page rendered with JavaScript using Playwright."""
+#Optional Playwright fetch:
+async def fetch_dynamic(ctx, url, timeout=15000):
+    """
+    Fetch HTML content of a page rendered with JavaScript using Playwright.
+    """
     # Use Playwright to load JS content fully
     try:
-        browser = await playwright.chromium.launch(headless=True)
-        page = await browser.new_page()
+        page = await ctx.browser.new_page()
         await page.goto(url, timeout=timeout)
         content = await page.content()
-        await browser.close()
+        await page.close()
         return content
     except Exception as e:
-        logging.error(f"Playwright failed to fetch {url}: {e}")
+        ctx.logger.error(f"Playwright failed to fetch {url}: {e}")
         return None
 
     
 def looks_like_content(html):
-
     """Check if fetched HTML content contains meaningful visible text."""
     if not html:
         logging.info("Empty HTML content")
@@ -102,18 +103,23 @@ def looks_like_content(html):
 #Def fetch existing session
 async def fetch_url(ctx, session, url):
     """Fetch a URL using static fetch first, and optionally dynamic fetch via Playwright if enabled."""
+
     # Try static fetch first
     #print(f"Fetching {url} with UA: {ctx.user_agent}")
     html = await fetch_static(ctx, session, url)
     #print(f"fetch_static returned: {len(html) if html else 'None'}")
     if html and looks_like_content(html):
         return html
+    
+    # 2. If dynamic disabled → return whatever static got
+    if not ctx.use_playwright:
+        return html
 
-    # If Playwright enabled, fallback to dynamic fetch
-    if not use_playwright or not PLAYWRIGHT_AVAILABLE:
-        return html 
+    # 3. Initialize Playwright only once
+    if not hasattr(ctx, "browser"):
+        ctx.playwright = await async_playwright().start()
+        ctx.browser = await ctx.playwright.chromium.launch(headless=True)
 
-    async with async_playwright() as playwright:
-        dyn_html = await fetch_dynamic(playwright, url)
-        return dyn_html
-
+    # 4. Use dynamic fetch properly
+    dyn_html = await fetch_dynamic(ctx, url)
+    return dyn_html
